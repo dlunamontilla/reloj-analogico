@@ -1,0 +1,168 @@
+:root {
+    background-color: darken(#0080d4, 30);
+    color: white;
+    font: {
+        family: "Open Sans", sans-serif, arial;
+    }
+}
+
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
+}
+
+.reloj {
+    --size: 300px;
+    --seconds: -90deg;
+    --minutes: -90deg;
+    --hours: -90deg;
+    --minutes-transition: 60s linear;
+    --hours-transition: 3600s linear;
+    box-shadow: 0 0 30px darken(blue, 20);
+    border: 1px solid;
+    position: relative;
+    background-color: rgba(white, 0.7);
+    background-image: radial-gradient(lighten(#0080d4, 47), lighten(#0080d4, 50));
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    border-radius: calc(var(--size) / 2);
+    &__hours {
+        font: {
+            weight: bold;
+            size: 1.4rem;
+        }
+        color: darken(#0080d4, 20);
+        &__9-3 {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0 calc(var(--size) * 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: calc(var(--size) * 0.1); //
+        }
+        &__12-6 {
+            position: absolute;
+            margin: auto;
+            lelft: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: calc(var(--size) * 0.05) 0;
+        }
+        &__indicators {
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            --indicators-size: calc(var(--size) * 0.01);
+            height: var(--indicators-size);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 calc(var(--size) * 0.05);
+            &::before,
+            &::after {
+                content: "";
+                line-height: 0;
+                background-color: darken(#0080d4, 20);
+                width: calc(var(--size) * 0.035);
+                border-radius: calc(var(--indicators-size) / 2);
+            }
+            &:nth-child(3) {
+                transform: rotate(-30deg);
+            }
+            &:nth-child(4) {
+                transform: rotate(-60deg);
+            }
+            &:nth-child(5) {
+                transform: rotate(-120deg);
+            }
+            &:nth-child(6) {
+                transform: rotate(-150deg);
+            }
+        }
+    }
+    &::before {
+        border-radius: 50%;
+        content: "";
+        display: block;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: black;
+        width: calc(var(--size) * 0.05);
+        height: calc(var(--size) * 0.05);
+        transform-origin: 100% center;
+        z-index: 1;
+    }
+    &-container {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        flex-wrap: wrap;
+        h1 {
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            padding: 40px 10px;
+        }
+    }
+    &__agujas {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: calc(var(--size) / 2 - calc(var(--size) * 0));
+        transform-origin: right center;
+        &--segundos {
+            background-color: red;
+            height: calc(var(--size) * 0.01);
+            transform-origin: 85% center;
+            transform: translate(-35%) rotateZ(var(--seconds));
+            width: calc(var(--size) / 2 - calc(var(--size) * 0.1));
+        }
+        &--minutos {
+            background-color: darken(red, 10);
+            height: calc(var(--size) * 0.03);
+            border-radius: calc(var(--size) * (1.75 / 100)) 0 0 calc(var(--size) * (1.75 / 100));
+            transform: translate(-50%) rotate(var(--minutes));
+            width: calc(var(--size) / 2 - var(--size) * 0.21);
+            // transition: 60s linear;
+        }
+        &--horas {
+            height: calc(var(--size) * 0.05);
+            width: calc(var(--size) / 2 - 25%);
+            clip-path: polygon(0 50%, 10% 0, 100% 20%, 100% 80%, 10% 100%);
+            transform-origin: 100% center;
+            transform: translate(-50%) rotate(var(--hours));
+            background-color: lighten(black, 20);
+        }
+    }
+}
