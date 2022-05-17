@@ -20,6 +20,12 @@ main {
     flex-grow: 1;
 }
 
+hr {
+    margin: 10px auto;
+    border: 0;
+    border-bottom: 1px solid rgba(white, 0.2);
+}
+
 * {
     box-sizing: border-box;
     &::before,
@@ -183,6 +189,10 @@ main {
     justify-content: center;
     color: white;
     background-color: black;
+    padding: 10px;
+
+    text-align: center;
+
     a {
         text-decoration: none;
         color: rgba(white, 0.8);
@@ -194,5 +204,9 @@ main {
             color: rgba(white, 0.8);
             transition: none;
         }
+    }
+
+    p {
+        margin: 0;
     }
 }
